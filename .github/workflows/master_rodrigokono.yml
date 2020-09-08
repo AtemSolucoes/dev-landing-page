@@ -15,15 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.102'  
-
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'rodrigokono'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_b68f947c58804900a8c2ffc9bb41370a }}
-        package: ${{env.DOTNET_ROOT}}/myapp 
+        package: /
